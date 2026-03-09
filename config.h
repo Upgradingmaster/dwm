@@ -73,6 +73,7 @@ static const char *dmenucmd[]        = { "dmenu_run", "-m", dmenumon, "-fn", dme
 static const char *termcmd[]         = { "st", NULL };
 static const char *autorandr_dmenu[] = { "autorandr_dmenu", NULL };
 
+#include "custom_funcs.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -92,6 +93,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_k,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_j,      setmfact,       {.f = +0.05} },
+
+	/* Movestack patch */
+	{ MODKEY|ShiftMask,             XK_h,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_l,      movestack,      {.i = -1 } },
+	/* Movestack patch */
+
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_w,      killclient,     {0} },
